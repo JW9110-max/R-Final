@@ -81,6 +81,7 @@ geom_timeline <- function(
     params = list(na.rm = na.rm, ...)
   )
 }
+#' @export
 GeomTimelineLabel <- ggplot2::ggproto(
   "GeomTimelineLabel",
   ggplot2::Geom,
