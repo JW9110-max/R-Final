@@ -14,19 +14,12 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-    ggplot2,
-    dplyr,
-    maps
+    rmarkdown
 VignetteBuilder: knitr
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Imports: 
     dplyr,
     ggplot2,
-    stringr,
-    leaflet,
-    grid,
-    magrittr,
-    htmltools
+    maps,
+    readr
