@@ -1,5 +1,7 @@
 # Final: NOAA Significant Earthquake Visualization Tool
 
+[![R-CMD-check](https://github.com/JW9110-max/R-Final/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JW9110-max/R-Final/actions/workflows/R-CMD-check.yaml)
+
 The **Final** R package provides a robust suite of tools designed to process, analyze, and visualize historical earthquake data from the **NOAA Global Significant Earthquake Database**. Built as a capstone project for the Mastering Software Development in R specialization, it introduces custom `ggplot2` layout layers for timeline tracking alongside interactive `leaflet` geospatial maps.
 
 ## Features
