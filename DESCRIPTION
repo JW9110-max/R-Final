@@ -16,6 +16,9 @@ Imports:
     ggplot2,
     maps,
     readr
+    stringr
+    tidyr
+    readr
 Suggests: 
     knitr,
     rmarkdown
