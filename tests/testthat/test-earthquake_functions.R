@@ -1,8 +1,8 @@
-library(Final)
+library(R.Final)
 library(ggplot2)
 
 # Load dataset paths for testing
-file_path <- system.file("extdata", "signif.txt", package = "Final")
+file_path <- system.file("extdata", "signif.txt", package = "R.Final")
 raw_data <- if (file_path != "") readr::read_delim(file_path, delim = "\t", n_max = 20, show_col_types = FALSE) else NULL
 
 # standardize column names needed by eq_clean_data
