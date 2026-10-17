@@ -15,8 +15,8 @@ Imports:
     dplyr,
     ggplot2,
     maps,
-    readr
-    stringr
+    readr,
+    stringr,
     tidyr
 Suggests: 
     knitr,
