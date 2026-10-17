@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(Final)
+library(R.Final)
 
-test_check("Final")
+test_check("R.Final")
