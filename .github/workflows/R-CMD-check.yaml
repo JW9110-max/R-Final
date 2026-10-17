@@ -25,12 +25,8 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
+          needs: website
 
       - uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"warning"'
-
-      - uses: r-lib/actions/check-r-package@v2
-        with:
-          error-on: '"warning"'
-          args: '"--no-build-vignettes" "--no-manual"'
