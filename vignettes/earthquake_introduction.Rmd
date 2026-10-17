@@ -1,0 +1,80 @@
+---
+title: "Introduction to the Final Earthquake Visualization Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{earthquake_introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Final)
+library(ggplot2)
+library(dplyr)
+library(leaflet)
+```
+
+This vignette guides through cleaning raw historical data from the NOAA Significant Earthquake Database and making static timelines and interactive maps.
+
+## Data Preparation
+
+The package includes data cleaning tools. `eq_clean_data()` fixes coordinates and handles year columns. `eq_location_clean()` removes out repetitive countries from the region names.
+
+```{r data_prep}
+# Read raw file safely using package contents
+file_path <- system.file("extdata", "signif.txt", package = "Final")
+raw_data <- readr::read_delim(file_path, delim = "\t")
+
+# Apply cleaning functions
+clean_data <- raw_data %>% 
+  eq_clean_data() %>% 
+  eq_location_clean()
+
+head(clean_data %>% select(DATE, COUNTRY, LOCATION_NAME, EQ_PRIMARY))
+```
+
+## Visualizing Earthquakes with Custom Geoms
+
+### 1. geom_timeline
+The `geom_timeline()` function builds a horizontal time axis by grouping events vertically by structural criteria while styling size by magnitude and shade color by death.
+
+```{r timeline_plot, fig.width = 7, fig.height = 4}
+clean_data %>% 
+  filter(COUNTRY %in% c("USA", "CHINA"), YEAR >= 2010) %>% 
+  ggplot(aes(x = DATE, y = COUNTRY, size = EQ_PRIMARY, color = TOTAL_DEATHS)) +
+  geom_timeline() +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+### 2. geom_timeline_label
+Draws annotations to points on timeline, change `geom_timeline_label()`. It selects highest `n_max` magnitude instances dynamically.
+
+```{r label_plot, fig.width = 7, fig.height = 4}
+clean_data %>% 
+  filter(COUNTRY %in% c("USA", "CHINA"), YEAR >= 2010) %>% 
+  ggplot(aes(x = DATE, y = COUNTRY, size = EQ_PRIMARY, color = TOTAL_DEATHS)) +
+  geom_timeline() +
+  geom_timeline_label(aes(label = LOCATION_NAME, magnitude = EQ_PRIMARY), n_max = 3) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+## Interactive Map Leaflet Plotting
+
+Make spatial elements using `eq_map()`. Use it with `eq_create_label()` to make popup tags.
+
+```{r map_plot, eval = FALSE}
+# Generates interactive map
+clean_data %>% 
+  filter(COUNTRY == "MEXICO" & YEAR >= 2000) %>% 
+  mutate(popup_text = eq_create_label(.)) %>% 
+  eq_map(annot_col = "popup_text")
+```

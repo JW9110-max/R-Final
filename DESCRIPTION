@@ -1,0 +1,29 @@
+Package: Final
+Title: Package that allows work with NOAA Earthquake Data
+Version: 1.0.0.0
+Authors@R: person(given = "J",
+                  family = "W",
+                  role = c("aut", "cre"),
+                  email = "sample@example.com")
+Description: A package developed for the Coursera Mastering Software 
+    Development in R Capstone. It cleans raw NOAA significant earthquake 
+    data, builds custom chronological timelines via ggplot2 extensions, 
+    and generates interactive geospatial distribution maps using leaflet..
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0
+Config/testthat/edition: 3
+Imports: 
+    dplyr,
+    ggplot2,
+    stringr,
+    leaflet,
+    grid,
+    magrittr,
+    htmltools

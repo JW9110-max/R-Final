@@ -1,0 +1,61 @@
+---
+title: "Visualizing NOAA Earthquake Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Visualizing NOAA Earthquake Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Final)
+```
+
+## Package Overview
+The package provides a comprehensive toolkit to process, explore, and map historical timelines from the NOAA Global Significant Earthquake Database. It includes functions to clean raw spatial attributes, display stratified event timelines via `ggplot2`, and compile interactive tracking maps using `leaflet`.
+
+## 1. Data Processing and Cleaning
+Before generating visualizations, your raw earthquake source strings must be run through the programmatic sanitization engine:
+
+```{r, eval = FALSE}
+library(readr)
+
+# Read the raw NOAA data
+raw_data <- readr::read_delim("signif.txt", delim = "\t")
+
+# Clean coordinates, reconstruct calendar dates, and format location text
+cleaned_df <- raw_data %>% 
+  eq_clean_data() %>% 
+  eq_location_clean()
+```
+## 2. Chronological Visualization (Module 2)
+You can compare earthquake time distributions grouped by country. Marker nodes map earthquake intensity to size and total fatalities to color scales:
+
+```{r, eval = FALSE}
+timeline_df <- cleaned_df %>%
+  dplyr::filter(YEAR >= 2000, YEAR <= 2015, COUNTRY %in% c("CHINA", "JAPAN", "USA"))
+
+ggplot(timeline_df, aes(x = DATE, y = COUNTRY, size = EQ_PRIMARY, colour = TOTAL_DEATHS)) +
+  geom_timeline() +
+  geom_timeline_label(aes(label = LOCATION_NAME, magnitude = EQ_PRIMARY), n_max = 3) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## 3. Interactive Leaflet Maps (Module 3)
+Finally, you can construct an interactive map with multi-variable boldface HTML popup description panels:
+
+```{r, eval = FALSE}
+map_df <- cleaned_df %>% 
+  dplyr::filter(COUNTRY == "MEXICO" & lubridate::year(DATE) >= 2000) %>% 
+  dplyr::mutate(popup_text = eq_create_label(.))
+
+eq_map(map_df, annot_col = "popup_text")
+```
