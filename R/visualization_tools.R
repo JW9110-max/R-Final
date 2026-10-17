@@ -81,6 +81,12 @@ geom_timeline <- function(
     params = list(na.rm = na.rm, ...)
   )
 }
+#' Geom Timeline Label
+#'
+#' A custom ggplot2 geom for adding labels to earthquake timeline plots.
+#'
+#' @keywords internal
+#'
 #' @export
 GeomTimelineLabel <- ggplot2::ggproto(
   "GeomTimelineLabel",
