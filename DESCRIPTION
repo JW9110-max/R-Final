@@ -1,4 +1,4 @@
-Package: Final
+Package: R-Final
 Title: Package that allows work with NOAA Earthquake Data
 Version: 1.0.0.0
 Authors@R: person(given = "J",
