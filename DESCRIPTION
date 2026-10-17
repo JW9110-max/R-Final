@@ -16,6 +16,9 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+    ggplot2,
+    dplyr,
+    maps
 VignetteBuilder: knitr
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
