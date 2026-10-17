@@ -6,7 +6,7 @@ Authors@R: person(given = "J",
                   family = "W",
                   role = c("aut", "cre"),
                   email = "sample@example.com")
-Description: A package developed for the Coursera Mastering Software Development 
+Description: A package developed for the Coursera Mastering Software Development.  Provides functions for analyzing and visualizing earthquake data.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
