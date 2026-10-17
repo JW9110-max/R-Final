@@ -1,6 +1,7 @@
 Package: R.Final
+Type: Package
 Title: Package that allows work with NOAA Earthquake Data
-Version: 1.0.0.0
+Version: 0.1.0
 Authors@R: person(given = "J",
                   family = "W",
                   role = c("aut", "cre"),
@@ -11,15 +12,14 @@ Description: A package developed for the Coursera Mastering Software
     and generates interactive geospatial distribution maps using leaflet..
 License: GPL (>= 3)
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-Suggests: 
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
-Config/roxygen2/version: 8.1.0
-Config/testthat/edition: 3
+LazyData: true
+Roxygen: 7.3.0
 Imports: 
     dplyr,
     ggplot2,
     maps,
     readr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
