@@ -14,6 +14,8 @@ RoxygenNote: 7.3.0
 Imports: 
     dplyr,
     ggplot2,
+    htmltools,
+    leaflet,
     magrittr,
     maps,
     readr,
