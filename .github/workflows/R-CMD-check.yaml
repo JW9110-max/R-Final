@@ -29,3 +29,8 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"warning"'
+
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          error-on: '"warning"'
+          args: '"--no-build-vignettes" "--no-manual"'
