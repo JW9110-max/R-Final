@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(Final)
+library(R.Final)
 library(ggplot2)
 library(dplyr)
 library(leaflet)
@@ -30,7 +30,7 @@ The package includes data cleaning tools. `eq_clean_data()` fixes coordinates an
 
 ```{r data_prep}
 # Read raw file safely using package contents
-file_path <- system.file("extdata", "signif.txt", package = "Final")
+file_path <- system.file("extdata", "signif.txt", package = "R.Final")
 raw_data <- readr::read_delim(file_path, delim = "\t")
 
 # Apply cleaning functions
