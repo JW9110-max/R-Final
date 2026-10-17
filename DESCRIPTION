@@ -6,14 +6,11 @@ Authors@R: person(given = "J",
                   family = "W",
                   role = c("aut", "cre"),
                   email = "sample@example.com")
-Description: A package developed for the Coursera Mastering Software 
-    Development in R Capstone. It cleans raw NOAA significant earthquake 
-    data, builds custom chronological timelines via ggplot2 extensions, 
-    and generates interactive geospatial distribution maps using leaflet..
+Description: A package developed for the Coursera Mastering Software Development 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Roxygen: 7.3.0
+RoxygenNote: 7.3.0
 Imports: 
     dplyr,
     ggplot2,
